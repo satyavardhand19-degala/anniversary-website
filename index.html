@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>An Anniversary Surprise</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Caveat:wght@400;600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>%F0%9F%92%96</text></svg>">
+</head>
+<body data-screen="lock">
+
+<main id="stage">
+
+  <!-- ================= 1. LOCK ================= -->
+  <section id="lock" class="screen is-active">
+    <div class="lock-grid">
+
+      <figure class="polaroid">
+        <span class="bow" aria-hidden="true"></span>
+        <img id="polaroid-img" alt="">
+        <figcaption id="polaroid-caption"></figcaption>
+      </figure>
+
+      <div class="lock-panel">
+        <svg class="lock-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <rect x="4.5" y="10" width="15" height="11" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="12" cy="15.4" r="1.5" fill="currentColor"/>
+          <path d="M12 16.6v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+
+        <p class="label">Enter a passcode</p>
+
+        <div class="dots" id="dots" role="status" aria-live="polite" aria-label="Passcode entry">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+
+        <div class="keypad" id="keypad"></div>
+
+        <p class="hint" id="hint" hidden></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 2. REVEAL ================= -->
+  <section id="reveal" class="screen">
+    <p class="reveal-code" id="reveal-code"></p>
+  </section>
+
+  <!-- ================= 3. ENVELOPE ================= -->
+  <section id="envelope" class="screen">
+    <div class="env-card">
+      <h1 class="env-title">
+        <span class="line-1">Happy Anniversary!</span>
+        <span class="line-2" id="env-name"></span>
+      </h1>
+
+      <div class="envelope" id="env">
+        <div class="env-letter" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="env-body" aria-hidden="true"></div>
+        <div class="flap" aria-hidden="true"></div>
+        <button class="seal" id="seal" type="button" aria-label="Open the envelope">
+          <span aria-hidden="true">&#10022;</span>
+        </button>
+      </div>
+
+      <p class="env-note" id="env-note"></p>
+    </div>
+  </section>
+
+  <!-- ================= 4a. HERO ================= -->
+  <section id="hero" class="screen">
+    <div class="hero-inner">
+      <p class="eyebrow rise" id="hero-eyebrow"></p>
+      <h1 class="hero-title rise" id="hero-title"></h1>
+      <div class="hero-lines rise" id="hero-lines"></div>
+      <button class="ghost-btn rise" id="to-letter" type="button">Read your letter</button>
+    </div>
+  </section>
+
+  <!-- ================= 4b. LETTER ================= -->
+  <section id="letter" class="screen">
+    <div class="letter-grid">
+
+      <article class="paper">
+        <span class="doodle d1" aria-hidden="true"></span>
+        <span class="doodle d2" aria-hidden="true"></span>
+        <span class="doodle d3" aria-hidden="true"></span>
+        <span class="doodle d4" aria-hidden="true"></span>
+        <span class="doodle d5" aria-hidden="true"></span>
+        <span class="doodle d6" aria-hidden="true"></span>
+
+        <header class="paper-head">
+          <p class="paper-eyebrow">Happy</p>
+          <p class="paper-script">Anniversary</p>
+        </header>
+
+        <div class="paper-body" id="letter-body"></div>
+        <p class="signoff" id="letter-signoff"></p>
+      </article>
+
+      <aside class="strip" id="photo-strip"></aside>
+
+    </div>
+
+    <button class="tap-line" id="to-wish" type="button">&mdash; tap here for a surprise &mdash;</button>
+  </section>
+
+  <!-- ================= 5. WISH ================= -->
+  <section id="wish" class="screen">
+    <h2 class="wish-title">&#10024; Make a Wish &#10024;</h2>
+
+    <div class="cake-wrap">
+      <div class="glow" id="glow" aria-hidden="true"></div>
+      <div class="cake" aria-hidden="true">
+        <div class="candles" id="candles"></div>
+        <div class="tier tier-top"></div>
+        <div class="tier tier-bottom"></div>
+        <div class="plate"></div>
+      </div>
+    </div>
+
+    <p class="wish-prompt" id="wish-prompt">Blow into your microphone&hellip;</p>
+    <button class="ghost-btn blow-btn" id="blow-btn" type="button" hidden>Blow out the candles</button>
+    <button class="relight" id="relight" type="button" hidden>Light them again</button>
+  </section>
+
+</main>
+
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<button class="mute-pill" id="mute" type="button" hidden aria-pressed="false">
+  <span class="note" aria-hidden="true">&#9835;</span>
+  <span id="mute-label"></span>
+</button>
+
+<audio id="song" loop preload="auto"></audio>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
